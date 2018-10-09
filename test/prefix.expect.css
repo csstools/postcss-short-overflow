@@ -1,0 +1,19 @@
+.test-duplicate_properties {
+	-x-overflow: hidden auto;
+}
+
+.test-x_property {
+	-x-overflow: auto *;
+}
+
+.test-y_property {
+	-x-overflow: * auto;
+}
+
+.test-important {
+	-x-overflow: hidden auto !important;
+}
+
+.test-unmodified {
+	-x-overflow: auto;
+}
