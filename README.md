@@ -64,9 +64,47 @@ postcss([
 
 #### prefix
 
-The `prefix` option determines the prefix applied to properties being processed
-(e.g. `x` for `-x-overflow`). Wrapping dashes (`-`) are automatically
-applied.
+The `prefix` option defines a prefix required by properties being transformed.
+Wrapping dashes are automatically applied, so that `x` would transform
+`-x-overflow`.
+
+```js
+postcssShortOverflow({ prefix: 'x' });
+```
+
+```pcss
+html {
+  -x-overflow: hidden auto;
+}
+
+/* becomes */
+
+html {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+```
+
+#### skip
+
+The `skip` option defines the skip token used to ignore portions of the
+shorthand.
+
+```js
+postcssShortOverflow({ skip: '-' });
+```
+
+```pcss
+[contenteditable] {
+  overflow: - auto;
+}
+
+/* becomes */
+
+[contenteditable] {
+  overflow-y: auto;
+}
+```
 
 [cli-img]: https://img.shields.io/travis/jonathantneal/postcss-short-overflow.svg
 [cli-url]: https://travis-ci.org/jonathantneal/postcss-short-overflow
